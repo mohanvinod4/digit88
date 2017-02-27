@@ -2,7 +2,10 @@
 
 {% block main %}
     <div class="span5 center-block">
-        <h2>Welcome back <b>{{ user['userName'] }}</b> <button>Create Order</button></h2>
+        <h2>Welcome back <b>{{ user['userName'] }}</b> 
+            <button class="btn btn-info">Create Order</button>
+            <a href = "{{ url('user_logout') }}" class = "btn btn-default btn-danger" role = "button">Logout</a>
+        </h2>
         <table class="table table-bordered">
             <thead>
                 <tr>

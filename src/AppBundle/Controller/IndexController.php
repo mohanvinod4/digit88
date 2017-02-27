@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\BaseController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Description of IndexController
@@ -63,6 +64,22 @@ class IndexController extends BaseController {
         $orderData = $this->getOrderData();
 
         return $this->render('AppBundle::dashboard.html.twig', array('user' => $userData, 'order' => $orderData));
+    }
+    
+    /**
+     * @Route("/userLogout", name="user_logout")
+     * @Method({"GET", "POST"})
+     */
+    public function logoutAction(Request $request) {
+        $session = $request->getSession();
+        $session->invalidate();
+        
+        $error['emailData'] = '';
+        $error['emailError'] = '';
+        $error['passwordData'] = '';
+        $error['passwordError'] = '';
+
+        return $this->render('AppBundle::index.html.twig', $error);
     }
 
 }
