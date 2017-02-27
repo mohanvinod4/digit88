@@ -1,0 +1,18 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block main %}
+    <div class="form">
+        <form class="form-signin" action="{{ url('homepage') }}" method="post" onsubmit="return validateLogin();">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputEmail" class="control-label">Email Address:</label>
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value="{{ emailData }}">
+            <div class="error text-danger" id="errorEmail">{{ emailError }}</div>
+            <label for="inputPassword" class="control-label">Password:</label>
+            <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required minlength="5" value="{{ passwordData }}">
+            <div class="error text-danger" id="errorPassword">{{ passwordError }}</div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/login.css') }}">
+    <script src="{{ asset('bundles/app/js/login.js') }}"></script>
+{% endblock %}

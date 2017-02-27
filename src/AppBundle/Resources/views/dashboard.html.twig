@@ -1,0 +1,24 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block main %}
+    <div class="span5 center-block">
+        <h2>Welcome back <b>{{ user['userName'] }}</b> <button>Create Order</button></h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Description</th>
+                    <th>Cost</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            {% for orderData in order %}
+                {% include 'AppBundle:content:order_table.html.twig' with 
+                    {'orderID': orderData['orderID'], 'orderDesc': orderData['orderDesc'],
+                        'totalCost': orderData['totalCost'], 'orderStatus': orderData['orderStatus'], 
+                        'orderDate': orderData['orderDate']} %}
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
